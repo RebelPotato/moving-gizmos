@@ -1,1 +1,0 @@
-// This file implements the simplified chinese documentation for the site

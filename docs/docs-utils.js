@@ -1,3 +1,4 @@
+import { signal, computed } from "signals";
 import { hs } from "../src/utils/h.js";
 
 function format(str) {
