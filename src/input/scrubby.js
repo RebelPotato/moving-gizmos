@@ -1,0 +1,1 @@
+// A "scrubbable" numeric value

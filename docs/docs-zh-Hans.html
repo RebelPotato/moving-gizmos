@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一些例子</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "signals": "/lib/signals-2.2.0.js",
+          "assert": "/src/utils/assert.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./doc-utils.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
+    />
+  </head>
+  <body>
+    <article>
+      <script type="module">
+        import { signal, computed, effect } from "signals";
+        import { assert } from "assert";
+        window.signal = signal;
+        window.computed = computed;
+        window.effect = effect;
+      </script>
+      <header>
+        <h1 class="f2 f1-m f-headline-l measure-narrow lh-title mv0">
+          <span class="bg-black-90 lh-copy white pa1 tracked-tight">“小玩意”库文档
+          </span>
+        </h1>
+      </header>
+      <div class="pa4 ph7-l mw9-l center">
+        <h2 class="f4 f3-m f2-l">输出组件</h2>
+        <section>
+          <h3 class="f5 f4-m f3-l mt4 mb3">显示组件</h3>
+          <p>显示组件能够显示一个值。适合 debug 使用。</p>
+          <fieldset>
+            <legend class="mb2">显示组件示例</legend>
+            <with-code>
+              <script type="module">
+                const a = signal(true);
+                const color = computed(() => (a.value ? "green" : "red"));
+                window.a = a;
+              </script>
+              <button onclick="a.value = ! a.value">a = !a</button>
+              <p>我的值现在是：<display-gizmo class="green" value="a" /></p>
+            </with-code>
+          </fieldset>
+          <h4 class="f6 f5-m f4-l mv3">参数</h4>
+          <div class="bg-washed-blue dark-green ph2 pv1">
+            <p class="mv0">
+              <code>value</code>
+              <span class="dib w3"></span>
+              需要显示的信号。
+            </p>
+          </div>
+        </section>
+
+        <h2 class="f4 f3-m f2-l">输入组件</h2>
+        <section>
+          <h3 class="f5 f4-m f3-l mt4 mb3">输入包裹组件</h3>
+          <p>输入包裹组件把它“包裹”的输入元素的值绑定到一个信号上。修改输入元素的值，信号的值会跟着改变。</p>
+          <fieldset>
+            <legend class="mb2">输入包裹组件示例</legend>
+            <with-code>
+              <script type="module">
+                const str = signal("Default value");
+                window.str = str;
+              </script>
+              <bind-gizmo value="str">
+                <input/>
+              </bind-gizmo>
+              <p>我的值现在是：<u><display-gizmo value="str" /></u></p>
+            </with-code>
+          </fieldset>
+          <h4 class="f6 f5-m f4-l mv3">参数</h4>
+          <div class="bg-washed-blue dark-green ph2 pv1">
+            <p class="mv0">
+              <code>value</code>
+              <span class="dib w3"></span>
+             被绑定的信号。
+            </p>
+          </div>
+        </section>
+    </article>
+  </body>
+</html>
