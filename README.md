@@ -1,8 +1,12 @@
-# Gizmo
+# Moving Gizmos
 
 A tiny&opinionated js library(?) for [explorable explainations](https://explorabl.es), data driven stories, and things like that.
 
 Or: cheap explorables done quick
+
+## The code
+
+This is quite work in progress, but you can see an example in the playground.
 
 ## The story
 
